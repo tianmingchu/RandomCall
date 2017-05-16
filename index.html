@@ -1,0 +1,196 @@
+<!--The random student call will accept a stream of names separated by a space or a comma!-->
+
+<!DOCTYPE html>
+<html>
+    <style>
+.button {
+    background-color: white;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.button1 {
+    color: black; 
+    border: 2px solid #db5b48;
+}
+.button1:hover {
+    background-color: #db5b48;
+    color: white;
+}
+        
+.button2 {
+    color: black; 
+    border: 2px solid #e2d518;
+}
+.button2:hover {
+    background-color: #e2d518; 
+    color: white;
+}
+        
+.button3 {
+    color: black; 
+    border: 2px solid #4286f4;
+}
+.button3:hover {
+    background-color: #4286f4; 
+    color: white;
+}
+        
+.button4 {  
+    color: black; 
+    border: 2px solid #29d866;
+}
+.button4:hover {
+    background-color: #29d866;
+    color: white;
+}
+        
+.button5 {
+    color: black;
+    border: 2px solid #ff900a;
+}
+.button5:hover {
+    background-color: #ff900a;
+    color: white;
+}
+        
+input[type=text] {
+    width: 50%;
+    padding: 20px 40px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    }
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+</style>
+    <title>Random Call</title>
+    <body onload="parseQuery()" >
+        <div align = "right">
+        <button class="button button3" id="demo" onclick="getUrl(document.getElementById('demo').innerHTML)">Get Class Url</button>
+        <div align = "left">  
+        <h2 id="class" size="120" style="color:black;height:20px"></h2>
+        <br>
+        <div align = "center">
+        <h1><b>Random Call</b></h1>
+        <br> 
+
+        <input type="text" id="myText" style="height:20px;" size="120" value="" onclick="JudgeInputAndSetPosition()"> 
+
+        <br> 
+        <br> 
+        <button class = "button button1" onclick="getNames()">Add Name(s)</button>
+        <button class="button button5" onclick="removeName()">Remove Name(s)</button>
+        <button class = "button button2" onclick= "myFunction()">Call on Someone!</button>
+<!--        <button class = "button button3" style="background-color:orange" id="demo" onclick="getUrl(document.getElementById('demo').innerHTML)">Get Class Url</button>-->
+        <button class = "button button4" type="button1" onclick="location.reload();">Reset</button>
+        <h1>
+        <p id="output"></p>
+        <p id="class"></p>
+        </h1>
+<script>
+
+var names = [];
+var queryString = window.location.search;
+    
+function parseQuery(queryString) {
+     document.getElementById("class").innerHTML = "Class: " + "</br>"
+var queryString = window.location.search;
+var queries = (queryString.replace('?', '')).replace(" ",'')
+// var url = "https://funnblox.github.io/PartnerPicker/?"
+// var queries = queryString.slice(url.length+1);
+var namesArray = ((queries).replace(" ",'')).split(/[\s,]+/);
+console.log(queries)
+if (queries !== ""){
+for (i = 0; i < namesArray.length; i++) { 
+        names.splice(0,0,namesArray[i]);
+    }
+}
+   for (i = 0; i <  names.length; i++) {
+    document.getElementById("class").innerHTML +=  names[i] + "</br>" 
+}
+}
+    
+function getUrl(text) {
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", "https://tianmingchu.github.io/randomcall/?" + names);
+}
+
+function beginRandomize() {
+    document.getElementById("output").innerHTML = ""; //clear previous randomized names
+    randomizeNames(names.slice(),Gs); //pass in a copy of the names array
+    //document.getElementById("output").innerHTML += "</br>"; //instead of clearing, could add a new line between
+}
+
+function createRandom(names) {
+  for (z = 0; z < names.length; z++) {
+    var randomNumber = Math.floor(Math.random() * names.length);
+    random.splice(0, 0, randomNumber);
+  }
+}
+    
+function removeName() {
+     document.getElementById("class").innerHTML = "Class: " + "</br>"
+ var x = document.getElementById("myText").value;
+var j =names.indexOf(x)
+console.log(j)
+if (j!=-1){
+ names.splice(j,1)
+}
+ document.getElementById("myText").value=""
+   for (i = 0; i <  names.length; i++) {
+    document.getElementById("class").innerHTML +=  names[i] + "</br>" 
+}
+}
+    
+function animation() {
+    document.body.style.background = 'black';
+    setTimeout(changeBackground, 873);
+}
+    
+function changeBackground() {
+    document.body.style.background = 'white';
+}
+    
+function pleaseWork() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+    
+function myFunction() {
+    if (names.length!=0){
+        var thing = Math.floor(Math.random()*names.length);
+        document.getElementById("output").innerHTML += names[thing] + "</br>";
+        names.splice(thing,1);
+    }
+}
+
+function getNames() {
+    document.getElementById("class").innerHTML = "Class: " + "</br>"
+    var x = document.getElementById("myText").value;
+    var namesArray = x.split(/[\s,]+/);
+    for (i = 0; i < namesArray.length; i++) { 
+        names.splice(0,0,namesArray[i]);
+    }
+    document.getElementById("myText").value=""
+   
+   for (i = 0; i <  names.length; i++) {
+    document.getElementById("class").innerHTML +=  names[i] + "</br>" 
+}
+}
+</script>
+
+        </div>
+    </body>
+</html>
