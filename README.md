@@ -12,4 +12,4 @@ To remove names: Type in a name, and click Remove Name
 When you are ready, Call on Someone!                                               
 People can only be called on once, but you can Reset
 
-![Alt text](randomcallimage.jpg?raw=true "Optional Title")
+![Alt text](randomcallimage.png?raw=true)
